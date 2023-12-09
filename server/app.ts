@@ -1,13 +1,13 @@
 import express from 'express';
+import path from 'path';
 
 const app = express();
 
-app.use(express.static('build'));
+const PORT = process.env.PORT || 3000;
 
-app.get('/', (req,res) => {
-  res.sendFile(__dirname + '/build/index.html')});
+app.use(express.static(path.join(__dirname, "build")));
 
-app.listen(3000, ()=> {
+app.listen(PORT, ()=> {
   console.log("server is running");
 });
 
